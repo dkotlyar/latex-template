@@ -1,32 +1,50 @@
+% Русификация
 \usepackage[utf8x]{inputenc}
 \usepackage[T2A]{fontenc}
 \usepackage[english, russian]{babel}
-
-\usepackage{tabularx}
-\usepackage{multirow}
+% Параметры страницы
+\usepackage{fullpage}
+\usepackage{setspace}
+\usepackage{geometry}
+% Графика
 \usepackage{graphicx}
+% Таблицы
+\usepackage{multirow}
+\usepackage{tabularx}
 \usepackage{longtable}
-%\usepackage{misccorr} % Баг: добавляет точки к номерам разделов
-%\usepackage{indentfirst}
+\usepackage{endlasthead}
+\usepackage{tabu}
+% Списки
+\usepackage{enumitem}
+% Формулы
 \usepackage{amsmath}
-%\usepackage{fancynum}
+% Листинг
+\usepackage{color}
 \usepackage{listings}
 \usepackage{xcolor}
-\usepackage{fullpage}
+% Остальное
+\usepackage[labelsep=endash,margin=10pt,justification=centerlast,format=hang,singlelinecheck=false]{caption}
+%\usepackage{misccorr} % Баг: добавляет точки к номерам разделов
+%\usepackage{indentfirst}
+%\usepackage{fancynum}
 
-%%TIMES NEW ROMAN
-\renewcommand{\rmdefault}{ftm}
-
-\usepackage[left=3cm,right=1cm,top=2cm,bottom=2cm]{geometry}
-\usepackage{setspace}
+% Параметры страницы
+\geometry{left=3cm,right=1cm,top=2cm,bottom=2cm} % Поля
 \linespread{1} % Интервал (1.6 - двойной, 1.3 - полуторный, 1 - одинарный)
 \setlength\parindent{1.25cm} % Абзацный отступ
 
-%ОГЛАВЛЕНИЕ
+% Русификация (babel)
+\addto\extrasrussian{%
+	\renewcommand\figurename{Рис.}
+	\renewcommand\contentsname{Содержание}
+}
+
+% Шрифт TIMES NEW ROMAN
+\renewcommand{\rmdefault}{ftm}
+
+% ОГЛАВЛЕНИЕ
 \makeatletter
-\def\tableofcontentsname{Оглавление} % Наименование раздела Оглавление(Содержание)
-%\def\contentsname{Оглавление} % Стандартная переменная, с пакетом babel почему-то не работает переопределение
-\renewcommand{\tableofcontents}{\section*{\centering\tableofcontentsname}\@starttoc{toc}}
+\renewcommand{\tableofcontents}{\section*{\centering\contentsname}\@starttoc{toc}}
 \setcounter{tocdepth}{2} % Глубина содержания
 % dottedtocline параметры: 1) глубина вложенности, 2) отступ слева, 3) место под номер страницы 
 \renewcommand{\l@section}{\@dottedtocline{1}{0cm}{2.3em}} % Стиль для секции. 
@@ -41,12 +59,7 @@
 }
 
 %РАЗДЕЛЫ
-%\usepackage{titlesec}
-%\titleformat{\section}{\centering\uppercase}{\thesection}{}{}
-%\titleformat{name=\section,page=even}[leftmargin]{\filleft\scshape}{\thesection}{.5em}{}
 \makeatletter
-\renewcommand{\@seccntformat}[1]{\csname the#1\endcsname~} % Убрать в названии секций точку после номера
-
 \renewcommand{\section}{\@startsection{section}{1}%
 	{\parindent} % Задает абзацный отступ
 	{3.5ex plus 1ex minus .2ex} % вертикальный отступ перед 
@@ -59,14 +72,9 @@
 	{\normalfont\large}}
 \makeatother
 
-
 %ТАБЛИЦЫ
-%\usepackage{longtable,setspace}
-\usepackage{endlasthead}
-\usepackage{tabu}
 
 %СПИСКИ
-\usepackage{enumitem}
 \makeatletter
 \AddEnumerateCounter{\asbuk}{\@asbuk}{м)}
 \makeatother
@@ -76,8 +84,6 @@
 \setlist[enumerate,2]{label=\asbuk{enumii})}
 \setlist[enumerate,3]{label=\alph{enumiii})}
 \setlist[itemize,1]{label=--}
-
-\usepackage[labelsep=endash,margin=10pt,justification=centerlast,format=hang,singlelinecheck=false]{caption}
 
 \binoppenalty=10000 % Запретить разрывы строк в формулах
 %\relpenalty=10000 % тоже самое
@@ -116,10 +122,6 @@
 
 \lstset{style=mystyle}
 
-\usepackage{color}
-\usepackage{xcolor}
-\usepackage{listings}
-
 % Цвета для кода
 
 \definecolor{string}{HTML}{B40000} % цвет строк в коде
@@ -131,7 +133,6 @@
 \definecolor{bk}{HTML}{FFFFFF} % цвет фона в коде
 \definecolor{frame}{HTML}{999999} % цвет рамки в коде
 \definecolor{brackets}{HTML}{B40000} % цвет скобок в коде
-
 
 %%% Отображение кода %%%
 
