@@ -7,6 +7,7 @@
 \usepackage{setspace}
 \usepackage{geometry}
 % Графика
+\usepackage{chngcntr}
 \usepackage{graphicx}
 % Таблицы
 \usepackage{multirow}
@@ -50,6 +51,15 @@
 \renewcommand{\l@section}{\@dottedtocline{1}{0cm}{2.3em}} % Стиль для секции. 
 \renewcommand{\l@subsection}{\@dottedtocline{2}{1.25cm}{2.3em}} % Стилья для подсекции
 \renewcommand{\@dotsep}{4} % расстояние между точками при заполнении
+\makeatother
+
+% Нумирация рисунков, таблиц и формул
+\makeatletter
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\counterwithin{equation}{section}
+\renewcommand{\thefigure}{\thesection.\@arabic\c@figure}
+\renewcommand{\thetable}{\thesection.\@arabic\c@table}
 \makeatother
 
 %СЕКЦИИ БЕЗ НОМЕРА И ПО ЦЕНТРУ
