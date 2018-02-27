@@ -8,3 +8,14 @@
 	block-t/.style={block,triangle,draw=black},
 	rect/.style={block-r,text-block,font=\normalfont},
 }
+
+% Block-scheme elements
+\tikzset{
+	block-scheme/.style={draw,align=center,minimum width=4cm},
+	begin/.style={block-scheme,rounded rectangle},
+	end/.style={begin},
+	if/.style={block-scheme,diamond,shape aspect=2},
+	for/.style={block-scheme,chamfered rectangle, chamfered rectangle xsep=1cm},
+	io/.style={block-scheme,trapezium,trapezium right angle=-60,trapezium left angle=60},
+	act/.style={block-scheme},
+}
